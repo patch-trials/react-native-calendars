@@ -228,4 +228,4 @@ class WeekCalendar extends Component {
   }
 }
 
-export default asCalendarConsumer(WeekCalendar);
+export default WeekCalendar;
