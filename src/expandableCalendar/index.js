@@ -59,7 +59,9 @@ class ExpandableCalendar extends Component {
     /** whether to have shadow/elevation for the calendar */
     allowShadow: PropTypes.bool,
     /** whether to disable the week scroll in closed position */
-    disableWeekScroll: PropTypes.bool
+    disableWeekScroll: PropTypes.bool,
+
+    onStateChange: PropTypes.func,
   }
 
   static defaultProps = {
@@ -68,7 +70,8 @@ class ExpandableCalendar extends Component {
     firstDay: 0,
     leftArrowImageSource: require('../calendar/img/previous.png'),
     rightArrowImageSource: require('../calendar/img/next.png'),
-    allowShadow: true
+    allowShadow: true,
+    //onStateChange: {() => console.log('ExpandableCalendar state has changed')}
   }
 
   static positions = POSITIONS;
@@ -296,6 +299,7 @@ class ExpandableCalendar extends Component {
         bounciness: BOUNCINESS
       }).start(this.onAnimatedFinished);
 
+      this.props.onStateChange(isOpen);
       this.setPosition();
       this.closeHeader(isOpen);
       this.resetWeekCalendarOpacity(isOpen);
