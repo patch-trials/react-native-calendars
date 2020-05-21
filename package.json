@@ -1,5 +1,5 @@
 {
-  "name": "react-native-calendars",
+  "name": "patch-rn-calendars",
   "version": "1.22.0",
   "main": "src/index.js",
   "description": "React Native Calendar Components",
@@ -16,12 +16,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wix/react-native-calendars"
+    "url": "git+https://github.com/patch-trials/react-native-calendars"
   },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+  "publishConfig":{
+    "registry": "https://npm.pkg.github.com/"
   },
-  "author": "Wix.com",
+  "author": "Wix.com, William Bryce",
   "license": "MIT",
   "dependencies": {
     "hoist-non-react-statics": "^3.3.1",
