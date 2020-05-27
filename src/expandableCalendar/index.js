@@ -61,7 +61,9 @@ class ExpandableCalendar extends Component {
     /** whether to disable the week scroll in closed position */
     disableWeekScroll: PropTypes.bool,
 
+    forceOpen: PropTypes.bool,
     onStateChange: PropTypes.func,
+    showCalendar:PropTypes.bool,
   }
 
   static defaultProps = {
@@ -124,18 +126,71 @@ class ExpandableCalendar extends Component {
     });
   }
 
-  // componentDidMount() {
-  //   this.updateNativeStyles();
-  // }
 
   componentDidUpdate(prevProps) {
-    const {date} = this.props.context;
+    const {showCalendar, context} = this.props
+    const {date} = context;
+
+    if(showCalendar !== prevProps.showCalendar){
+      this.toggleCalendar(showCalendar)
+    }
+
     if (date !== prevProps.context.date) {
       // date was changed from AgendaList, arrows or scroll
       this.scrollToDate(date);
+      if(showCalendar){
+        this.props.onStateChange(!showCalendar);
+      }
     }
   }
+
+
+  toggleCalendar(showCalendar){
+      const newValue = showCalendar ? this.openHeight : this.closedHeight;
+
+      const {deltaY} = this.state;
+      
+      deltaY.setValue(this._height); // set the start position for the animated value
+      this._height = newValue;
+
+      Animated.spring(deltaY, {
+        toValue: this._height,
+        speed: SPEED,
+        bounciness: BOUNCINESS
+      }).start(this.onAnimatedFinished);
+
+      //this.props.onStateChange(open);
+      this.setPosition();
+      this.closeHeader(showCalendar);
+      this.resetWeekCalendarOpacity(showCalendar);
+  }
   
+  
+  bounceToPosition(toValue) {  
+    if (!this.props.disablePan) {  
+      const {deltaY} = this.state;
+      const threshold = this.openHeight / 1.75;
+
+      let isOpen = this._height >= threshold;
+      const newValue = isOpen ? this.openHeight : this.closedHeight;
+      
+      deltaY.setValue(this._height); // set the start position for the animated value
+      this._height = toValue || newValue;
+      isOpen = this._height >= threshold; // re-check after this._height was set
+
+      Animated.spring(deltaY, {
+        toValue: this._height,
+        speed: SPEED,
+        bounciness: BOUNCINESS
+      }).start(this.onAnimatedFinished);
+
+      this.props.onStateChange(isOpen);
+      this.setPosition();
+      this.closeHeader(isOpen);
+      this.resetWeekCalendarOpacity(isOpen);
+    }
+  }
+
   updateNativeStyles() {
     this.wrapper && this.wrapper.setNativeProps(this._wrapperStyles);
     if (!this.props.horizontal) {
@@ -280,31 +335,6 @@ class ExpandableCalendar extends Component {
   };
 
   /** Animated */
-  
-  bounceToPosition(toValue) {  
-    if (!this.props.disablePan) {  
-      const {deltaY} = this.state;
-      const threshold = this.openHeight / 1.75;
-
-      let isOpen = this._height >= threshold;
-      const newValue = isOpen ? this.openHeight : this.closedHeight;
-      
-      deltaY.setValue(this._height); // set the start position for the animated value
-      this._height = toValue || newValue;
-      isOpen = this._height >= threshold; // re-check after this._height was set
-
-      Animated.spring(deltaY, {
-        toValue: this._height,
-        speed: SPEED,
-        bounciness: BOUNCINESS
-      }).start(this.onAnimatedFinished);
-
-      this.props.onStateChange(isOpen);
-      this.setPosition();
-      this.closeHeader(isOpen);
-      this.resetWeekCalendarOpacity(isOpen);
-    }
-  }
 
   onAnimatedFinished = ({finished}) => {
     if (finished) {
