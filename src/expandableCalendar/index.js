@@ -156,7 +156,8 @@ class ExpandableCalendar extends Component {
       Animated.spring(deltaY, {
         toValue: this._height,
         speed: SPEED,
-        bounciness: BOUNCINESS
+        bounciness: BOUNCINESS,
+        useNativeDriver: false
       }).start(this.onAnimatedFinished);
 
       //this.props.onStateChange(open);
@@ -181,7 +182,8 @@ class ExpandableCalendar extends Component {
       Animated.spring(deltaY, {
         toValue: this._height,
         speed: SPEED,
-        bounciness: BOUNCINESS
+        bounciness: BOUNCINESS,
+        useNativeDriver: false
       }).start(this.onAnimatedFinished);
 
       this.props.onStateChange(isOpen);
@@ -361,7 +363,8 @@ class ExpandableCalendar extends Component {
       Animated.spring(headerDeltaY, {
         toValue: 0,
         speed: SPEED / 10,
-        bounciness: 1
+        bounciness: 1,
+        useNativeDriver: false
       }).start();
     }
   }
