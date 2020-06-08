@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {TouchableOpacity, Text} from 'react-native';
 import PropTypes from 'prop-types';
 
+import ProgressIndictor from './progressCircle';
 import styleConstructor from './style';
 import {shouldUpdate} from '../../../component-updater';
 
@@ -51,13 +52,17 @@ class Day extends Component {
       };
     }
 
+    let showIndictor = false
+    let indictorStyle = {}
+
     const isDisabled = typeof marking.disabled !== 'undefined' ? marking.disabled : this.props.state === 'disabled';
     
     if (marking.selected) {
       containerStyle.push(this.style.selected);
       textStyle.push(this.style.selectedText);
     } else if (isDisabled) {
-      textStyle.push(this.style.disabledText);} else if (this.props.state === 'today') {
+      textStyle.push(this.style.disabledText);
+    } else if (this.props.state === 'today') {
       containerStyle.push(this.style.today);
       textStyle.push(this.style.todayText);
     }
@@ -73,21 +78,33 @@ class Day extends Component {
       if (styles.text) {
         textStyle.push(styles.text);
       }
+      if (styles.showIndictor){
+        showIndictor = styles.showIndictor
+      }
+      if(styles.indictorStyle){
+        indictorStyle = styles.indictorStyle
+      }
     }
 
     return (
-      <TouchableOpacity
-        testID={this.props.testID}
-        style={containerStyle}
-        onPress={this.onDayPress}
-        onLongPress={this.onDayLongPress}
-        activeOpacity={marking.activeOpacity}
-        disabled={marking.disableTouchEvent}
-        accessibilityRole={isDisabled ? undefined : 'button'}
-        accessibilityLabel={this.props.accessibilityLabel}
+      <ProgressIndictor 
+        showProgress = {showIndictor}
+        indictorStyle = {indictorStyle}
       >
-        <Text allowFontScaling={false} style={textStyle}>{String(this.props.children)}</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          testID={this.props.testID}
+          style={containerStyle}
+          onPress={this.onDayPress}
+          onLongPress={this.onDayLongPress}
+          activeOpacity={marking.activeOpacity}
+          disabled={marking.disableTouchEvent}
+          accessibilityRole={isDisabled ? undefined : 'button'}
+          accessibilityLabel={this.props.accessibilityLabel}
+        >
+
+            <Text allowFontScaling={false} style={textStyle}>{String(this.props.children)}</Text>
+        </TouchableOpacity>
+      </ProgressIndictor>
     );
   }
 }

@@ -13,6 +13,7 @@ import UnitDay from '../calendar/day/period';
 import MultiDotDay from '../calendar/day/multi-dot';
 import MultiPeriodDay from '../calendar/day/multi-period';
 import SingleDay from '../calendar/day/custom';
+import ProgressDay from '../calendar/day/progress-indicator';
 import Calendar from '../calendar';
 
 
@@ -74,6 +75,8 @@ class Week extends Component {
       return MultiDotDay;
     case 'multi-period':
       return MultiPeriodDay;
+    case 'progress-indictor':
+      return ProgressDay;
     case 'custom':
       return SingleDay;
     default:

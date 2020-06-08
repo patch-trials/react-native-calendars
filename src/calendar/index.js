@@ -11,6 +11,7 @@ import UnitDay from './day/period';
 import MultiDotDay from './day/multi-dot';
 import MultiPeriodDay from './day/multi-period';
 import SingleDay from './day/custom';
+import ProgressDay from './day/progress-indicator'
 import CalendarHeader from './header';
 import shouldComponentUpdate from './updater';
 import {SELECT_DATE_SLOT} from '../testIDs';
@@ -242,6 +243,8 @@ class Calendar extends Component {
       return MultiPeriodDay;
     case 'custom':
       return SingleDay;
+    case 'progress-indictor':
+      return ProgressDay;
     default:
       return Day;
     }

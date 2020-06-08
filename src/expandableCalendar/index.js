@@ -29,10 +29,10 @@ const POSITIONS = {
 };
 const SPEED = 20;
 const BOUNCINESS = 6;
-const CLOSED_HEIGHT = 68; // header + 1 week
+const CLOSED_HEIGHT = 56; // header + 1 week
 const WEEK_HEIGHT = 46;
 const KNOB_CONTAINER_HEIGHT = 20;
-const HEADER_HEIGHT = 22;
+const HEADER_HEIGHT = 10;
 const DAY_NAMES_PADDING = 24;
 
 /**
@@ -239,7 +239,7 @@ class ExpandableCalendar extends Component {
     if (!this.props.horizontal) {
       return Math.max(commons.screenHeight, commons.screenWidth);
     }
-    return CLOSED_HEIGHT + (WEEK_HEIGHT * (this.numberOfWeeks - 1)) + (this.props.hideKnob ? 18 : KNOB_CONTAINER_HEIGHT);
+    return CLOSED_HEIGHT + (WEEK_HEIGHT * (this.numberOfWeeks - 1)) + (this.props.hideKnob ? 34 : KNOB_CONTAINER_HEIGHT);
   }
 
   getDateString(date) {
@@ -445,7 +445,6 @@ class ExpandableCalendar extends Component {
         style={[this.style.header, {height: HEADER_HEIGHT, top: this.state.headerDeltaY}]}
         pointerEvents={'none'}
       >
-        <Text allowFontScaling={false} style={this.style.headerTitle}>{monthYear}</Text>
         {this.renderWeekDaysNames()}
       </Animated.View>
     );
@@ -550,7 +549,7 @@ class ExpandableCalendar extends Component {
             /> 
             {horizontal && this.renderWeekCalendar()}
             {!hideKnob && this.renderKnob()}
-            {!horizontal && this.renderHeader()}
+            {/*{!horizontal && this.renderHeader()}*/}
           </Animated.View> 
         }
       </View>
