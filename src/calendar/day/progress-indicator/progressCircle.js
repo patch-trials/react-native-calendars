@@ -10,7 +10,7 @@ import {shouldUpdate} from '../../../component-updater';
 function ProgressIndictor(props) {
     const {showProgress, indictorStyle, children} = props;
 
-    console.log('in progressIndictor:', showProgress, indictorStyle)
+    // console.log('in progressIndictor:', showProgress, indictorStyle)
     return (
         <>
             {showProgress ? 
