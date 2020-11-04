@@ -7,10 +7,10 @@ import styleConstructor from './style';
 import {shouldUpdate} from '../../../component-updater';
 
 
-function ProgressIndictor(props) {
+function ProgressIndicator(props) {
     const {showProgress, indicatorStyle, children} = props;
 
-    // console.log('in progressIndictor:', showProgress, indicatorStyle)
+    // console.log('in progressIndicator:', showProgress, indicatorStyle)
     return (
         <>
             {showProgress ? 
@@ -37,4 +37,4 @@ function ProgressIndictor(props) {
     );
 }
 
-export default ProgressIndictor;
+export default ProgressIndicator;

@@ -75,7 +75,7 @@ class Week extends Component {
       return MultiDotDay;
     case 'multi-period':
       return MultiPeriodDay;
-    case 'progress-indictor':
+    case 'progress-indicator':
       return ProgressDay;
     case 'custom':
       return SingleDay;

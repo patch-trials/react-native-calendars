@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {TouchableOpacity, Text} from 'react-native';
 import PropTypes from 'prop-types';
 
-import ProgressIndictor from './progressCircle';
+import ProgressIndicator from './progressCircle';
 import styleConstructor from './style';
 import {shouldUpdate} from '../../../component-updater';
 
@@ -87,7 +87,7 @@ class Day extends Component {
     }
 
     return (
-      <ProgressIndictor 
+      <ProgressIndicator 
         showProgress = {showIndicator}
         indicatorStyle = {indicatorStyle}
       >
@@ -104,7 +104,7 @@ class Day extends Component {
 
             <Text allowFontScaling={false} style={textStyle}>{String(this.props.children)}</Text>
         </TouchableOpacity>
-      </ProgressIndictor>
+      </ProgressIndicator>
     );
   }
 }

@@ -243,7 +243,7 @@ class Calendar extends Component {
       return MultiPeriodDay;
     case 'custom':
       return SingleDay;
-    case 'progress-indictor':
+    case 'progress-indicator':
       return ProgressDay;
     default:
       return Day;
