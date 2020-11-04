@@ -20,9 +20,10 @@ function ProgressIndicator(props) {
                 borderWidth={indicatorStyle.borderWidth}
                 containerStyle={indicatorStyle.containerStyle}
                 outerCircleStyle = {indicatorStyle.outerCircleStyle}
-                color={indicatorStyle.color}
-                shadowColor={indicatorStyle.backgroundColor}
-                bgColor={indicatorStyle.backgroundColor}
+                color={indicatorStyle.progress >= 100 ? indicatorStyle.completeColor : indicatorStyle.incompleteColor}
+                shadowColor={indicatorStyle.progress >= 100 ? indicatorStyle.completeColor : indicatorStyle.incompleteColor}
+                bgColor={indicatorStyle.progress >= 100 ? indicatorStyle.completeColor : indicatorStyle.incompleteColor}
+                // bgColor={indicatorStyle.backgroundColor}
                 >
                 {children}
              </ProgressCircle>)
