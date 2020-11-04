@@ -8,21 +8,21 @@ import {shouldUpdate} from '../../../component-updater';
 
 
 function ProgressIndictor(props) {
-    const {showProgress, indictorStyle, children} = props;
+    const {showProgress, indicatorStyle, children} = props;
 
-    // console.log('in progressIndictor:', showProgress, indictorStyle)
+    // console.log('in progressIndictor:', showProgress, indicatorStyle)
     return (
         <>
             {showProgress ? 
             (<ProgressCircle
-                percent={indictorStyle.progress}
-                radius={indictorStyle.width/2}
-                borderWidth={indictorStyle.borderWidth}
-                containerStyle={indictorStyle.containerStyle}
-               outerCircleStyle = {indictorStyle.outerCircleStyle}
-                color={indictorStyle.color}
-                shadowColor={indictorStyle.backgroundColor}
-                bgColor={indictorStyle.backgroundColor}
+                percent={indicatorStyle.progress}
+                radius={indicatorStyle.width/2}
+                borderWidth={indicatorStyle.borderWidth}
+                containerStyle={indicatorStyle.containerStyle}
+                outerCircleStyle = {indicatorStyle.outerCircleStyle}
+                color={indicatorStyle.color}
+                shadowColor={indicatorStyle.backgroundColor}
+                bgColor={indicatorStyle.backgroundColor}
                 >
                 {children}
              </ProgressCircle>)

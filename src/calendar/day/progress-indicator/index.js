@@ -52,8 +52,8 @@ class Day extends Component {
       };
     }
 
-    let showIndictor = false
-    let indictorStyle = {}
+    let showIndicator = false
+    let indicatorStyle = {}
 
     const isDisabled = typeof marking.disabled !== 'undefined' ? marking.disabled : this.props.state === 'disabled';
     
@@ -78,18 +78,18 @@ class Day extends Component {
       if (styles.text) {
         textStyle.push(styles.text);
       }
-      if (styles.showIndictor){
-        showIndictor = styles.showIndictor
+      if (styles.showIndicator){
+        showIndicator = styles.showIndicator
       }
-      if(styles.indictorStyle){
-        indictorStyle = styles.indictorStyle
+      if(styles.indicatorStyle){
+        indicatorStyle = styles.indicatorStyle
       }
     }
 
     return (
       <ProgressIndictor 
-        showProgress = {showIndictor}
-        indictorStyle = {indictorStyle}
+        showProgress = {showIndicator}
+        indicatorStyle = {indicatorStyle}
       >
         <TouchableOpacity
           testID={this.props.testID}
