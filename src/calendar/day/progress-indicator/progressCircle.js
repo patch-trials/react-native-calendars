@@ -10,7 +10,7 @@ import {shouldUpdate} from '../../../component-updater';
 function ProgressIndicator(props) {
     const {showProgress, indicatorStyle, children} = props;
 
-    // console.log('in progressIndicator:', showProgress, indicatorStyle)
+    // console.log('in progressIndicator:', showProgress, indicatorStyle);
     return (
         <>
             {showProgress ? 
@@ -20,9 +20,11 @@ function ProgressIndicator(props) {
                 borderWidth={indicatorStyle.borderWidth}
                 containerStyle={indicatorStyle.containerStyle}
                 outerCircleStyle = {indicatorStyle.outerCircleStyle}
-                color={indicatorStyle.progress >= 100 ? indicatorStyle.completeColor : indicatorStyle.incompleteColor}
+                // color={indicatorStyle.progress >= 100 ? indicatorStyle.completeColor : indicatorStyle.incompleteColor}
                 shadowColor={indicatorStyle.progress >= 100 ? indicatorStyle.completeColor : indicatorStyle.incompleteColor}
                 bgColor={indicatorStyle.progress >= 100 ? indicatorStyle.completeColor : indicatorStyle.incompleteColor}
+                color={indicatorStyle.color}
+                shadowColor={indicatorStyle.backgroundColor}
                 // bgColor={indicatorStyle.backgroundColor}
                 >
                 {children}
