@@ -184,7 +184,7 @@ class Calendar extends Component {
     const dateAsObject = xdateToData(day);
     const accessibilityLabel = `${state === 'today' ? 'today' : ''} ${day.toString('dddd MMMM d')} ${this.getMarkingLabel(day)}`;
 
-    console.log('disable dayPress in Calendar',this.props.disableDayPress)
+    //console.log('disable dayPress in Calendar',this.props.disableDayPress)
 
     return (
       <View style={{flex: 1, alignItems: 'center'}} key={id}>
