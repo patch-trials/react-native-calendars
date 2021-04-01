@@ -85,7 +85,9 @@ class Calendar extends Component {
     /** Style passed to the header */
     headerStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.array]),
     /** Provide aria-level for calendar heading for proper accessibility when used with web (react-native-web) */
-    webAriaLevel: PropTypes.number
+    webAriaLevel: PropTypes.number,
+    /** Disable all day presses */
+    disableDayPress: PropTypes.bool
   };
 
   constructor(props) {
@@ -193,6 +195,7 @@ class Calendar extends Component {
           date={dateAsObject}
           marking={this.getDateMarking(day)}
           accessibilityLabel={accessibilityLabel}
+          disableDayPress={this.disableDayPress}
         >
           {date}
         </DayComp>

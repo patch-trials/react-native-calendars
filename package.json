@@ -1,6 +1,6 @@
 {
   "name": "patch-rn-calendars",
-  "version": "1.22.0",
+  "version": "1.23.0",
   "main": "src/index.js",
   "description": "React Native Calendar Components",
   "scripts": {
@@ -12,7 +12,8 @@
     "start": "react-native start",
     "ios": "react-native run-ios",
     "android": "react-native run-android",
-    "xcode": "open ios/CalendarsExample.xcworkspace/"
+    "xcode": "open ios/CalendarsExample.xcworkspace/",
+    "configure": "npm login --registry=https://npm.pkg.github.com --scope=@patchrx"
   },
   "repository": {
     "type": "git",
