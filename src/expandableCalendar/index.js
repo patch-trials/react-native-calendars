@@ -60,7 +60,7 @@ class ExpandableCalendar extends Component {
     allowShadow: PropTypes.bool,
     /** whether to disable the week scroll in closed position */
     disableWeekScroll: PropTypes.bool,
-
+    disableDayPress: PropTypes.bool,
     forceOpen: PropTypes.bool,
     onStateChange: PropTypes.func,
     showCalendar:PropTypes.bool,
@@ -230,7 +230,9 @@ class ExpandableCalendar extends Component {
         const firstDayOfWeek = (next ? 7 : -7) - dayOfTheWeek + firstDay;
         d.addDays(firstDayOfWeek);
       }
-      _.invoke(this.props.context, 'setDate', this.getDateString(d), UPDATE_SOURCES.PAGE_SCROLL); 
+      /*
+      _.invoke(this.props.context, 'setDate', this.getDateString(d), UPDATE_SOURCES.PAGE_SCROLL);
+      */
     }
   }
 
@@ -477,6 +479,7 @@ class ExpandableCalendar extends Component {
           hideDayNames={true}
           accessibilityElementsHidden // iOS
           importantForAccessibility={'no-hide-descendants'} // Android
+      disableDayPress={this.props.disableDayPress}
         />
       </Animated.View>
     );
@@ -521,6 +524,7 @@ class ExpandableCalendar extends Component {
             markedDates={this.getMarkedDates()}
             hideExtraDays
             renderArrow={this.renderArrow}
+            disableDayPress={this.props.disableDayPress}
           />
           :
           <Animated.View 
@@ -546,6 +550,7 @@ class ExpandableCalendar extends Component {
               hideExtraDays={!horizontal}
               renderArrow={this.renderArrow}
               staticHeader
+              disableDayPress={this.props.disableDayPress}
             /> 
             {horizontal && this.renderWeekCalendar()}
             {!hideKnob && this.renderKnob()}

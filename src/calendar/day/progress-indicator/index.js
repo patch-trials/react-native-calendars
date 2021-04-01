@@ -86,6 +86,7 @@ class Day extends Component {
         indicatorStyle = styles.indicatorStyle
       }
     }
+    //console.log('disableDayPress in calendar:', this.props.disableDayPress)
 
     return (
       <ProgressIndicator 
@@ -98,7 +99,7 @@ class Day extends Component {
           onPress={this.onDayPress}
           onLongPress={this.onDayLongPress}
           activeOpacity={marking.activeOpacity}
-          disabled={marking.disableTouchEvent || this.disableDayPress}
+          disabled={marking.disableTouchEvent || this.props.disableDayPress}
           accessibilityRole={isDisabled ? undefined : 'button'}
           accessibilityLabel={this.props.accessibilityLabel}
         >

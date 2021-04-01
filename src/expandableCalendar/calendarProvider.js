@@ -37,7 +37,9 @@ class CalendarProvider extends Component {
     /** Today button's style */
     todayButtonStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.array]),
     /** The opacity for the disabled today button (0-1) */
-    disabledOpacity: PropTypes.number
+    disabledOpacity: PropTypes.number,
+    
+    disableDayPress: PropTypes.bool,
   }
 
   constructor(props) {
@@ -53,6 +55,9 @@ class CalendarProvider extends Component {
       opacity: new Animated.Value(1)
     };
   }
+
+
+  //console.log('disableDayPress in ExpandableCalendar:', this.props.disableDayPress);
 
   componentDidUpdate(prevProps) {
     if (prevProps.date !== this.props.date) {
@@ -161,6 +166,7 @@ class CalendarProvider extends Component {
       </Animated.View>
     );
   }
+
   
   render() {
     return (

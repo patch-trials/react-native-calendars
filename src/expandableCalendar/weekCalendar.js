@@ -29,7 +29,9 @@ class WeekCalendar extends Component {
     /** whether to have shadow/elevation for the calendar */
     allowShadow: PropTypes.bool,
     /** whether to hide the names of the week days */
-    hideDayNames: PropTypes.bool
+    hideDayNames: PropTypes.bool,
+    /** Disa*/
+    disableDayPress: PropTypes.bool
   };
 
   static defaultProps = {
@@ -169,6 +171,7 @@ class WeekCalendar extends Component {
         style={[{width: calendarWidth || this.containerWidth}, style]}
         markedDates={this.getMarkedDates()}
         onDayPress={onDayPress || this.onDayPress}
+        disableDayPress={this.props.disableDayPress}
       />
     );
   }
