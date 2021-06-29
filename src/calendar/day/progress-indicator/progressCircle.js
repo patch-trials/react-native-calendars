@@ -16,7 +16,7 @@ function ProgressIndicator(props) {
             {showProgress ? 
             (<ProgressCircle
                 percent={indicatorStyle.progress}
-                radius={indicatorStyle.width/2}
+                radius={indicatorStyle.radius}
                 borderWidth={indicatorStyle.borderWidth}
                 containerStyle={indicatorStyle.containerStyle}
                 outerCircleStyle = {indicatorStyle.outerCircleStyle}
